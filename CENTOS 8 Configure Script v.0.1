@@ -1,3 +1,18 @@
 useradd henry
 passwd henry
 usermod -aG wheel henry
+whoami 
+hostname
+ifconfig
+nslookup netflix.com
+
+
+#Post netowrk config
+
+sudo dnf install realmd sssd oddjob oddjob-mkhomedir adcli samba-common samba-common-tools krb5-workstation 
+realm join henry.local -U administrator
+
+systemctl start cockpit.socket
+systemctl enable cockpit.socket
+firewall-cmd --permanent --add-service=cockpit
+firewall-cmd --reload
