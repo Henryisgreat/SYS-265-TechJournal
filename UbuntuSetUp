@@ -1,0 +1,4 @@
+adduser henry
+passwd henry
+
+usermod -aG sudo henry
