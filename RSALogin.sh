@@ -10,11 +10,11 @@ if (( $EUID != 0)); then
 	exit
 fi
 
-if (( $EUID >= 1)); then
-	useradd -m -d /home/$username -s bin/bash $username
-	mkdir /home/$username.ssh
-	cp $username/linux/public-keys/id_rsa.pub /home/$username/.ssh/authorized_keys
-	chmod 700 /home/$username/.ssh
-	chmod 600 /home/$username/.ssh/authorized_keys
-	chown -R $username:$username /home/$username/.ssh
+if [! -z "$1"]; then
+	useradd -m -d /home/$1 -s bin/bash $1
+	mkdir /home/$1.ssh
+	cp /SYS-265-TechJournal/linux/public-keys/id_rsa.pub /home/$1/.ssh/authorized_keys
+	chmod 700 /home/$1/.ssh
+	chmod 600 /home/$1/.ssh/authorized_keys
+	chown -R $1:$1 /home/$1/.ssh
 fi
