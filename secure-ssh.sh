@@ -3,7 +3,7 @@
 #create user that can only login via RSA
 
 echo "Name of the user:"
-read Username
+read $1
 
 if (( $EUID != 0)); then
 	echo "Permission Denied"
